@@ -1,5 +1,6 @@
 /*
  * spike
+ *  - https://www.youtube.com/watch?v=c3MjU9E9buQ&t=1s
  *  - understand how Autocomplete works
  *  - with and without async, defer attributes
  *  - with and without callback param
