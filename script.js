@@ -4,6 +4,7 @@
  *  - with and without async, defer attributes
  *  - with and without callback param
  *  - test with parcel
+ *  //TODO: Troubleshoot: "This page can't load Google Maps correctly. Do you own this website."
  */
 
 const placeSearch = document.querySelector('[data-place-search]')
