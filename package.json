@@ -1,0 +1,24 @@
+{
+  "name": "spike-google.maps.places",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ren132710/spike-google.maps.places.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ren132710/spike-google.maps.places/issues"
+  },
+  "homepage": "https://github.com/ren132710/spike-google.maps.places#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}

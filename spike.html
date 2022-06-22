@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        font-family: monospace;
+        color: #3f3f48;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 100;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+      }
+
+      h1 {
+        margin-top: 2rem;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 50%;
+        min-height: 50vh;
+        max-height: 85vh;
+        padding: 2rem;
+        margin: 3rem 2rem 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.3rem;
+      }
+
+      .place-search {
+        font-size: 1.2rem;
+        border: 1px solid #777;
+        outline: none;
+        border-radius: 0.3em;
+        padding: 0.5em;
+        width: 100%;
+        height: 2.5em;
+      }
+
+      .card {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.3em;
+      }
+
+      .card-header {
+        padding: 0.5em 1em;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      }
+
+      .card-body {
+        min-height: 200px;
+        max-height: 70vh;
+        overflow: auto;
+      }
+
+      .json {
+        font-size: 0.85rem;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        padding: 0.5em;
+      }
+    </style>
+    <title>Spike | Maps AutoComplete</title>
+  </head>
+  <body>
+    <h1>Spike | Maps AutoComplete</h1>
+    <div class="container">
+      <div>
+        <input type="text" class="place-search" data-place-search placeholder="Weather at your places" />
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-header">Result</div>
+        <div class="card-body">
+          <pre class="json" data-place-result></pre>
+        </div>
+      </div>
+    </div>
+    <script>
+      const placeSearch = document.querySelector('[data-place-search]')
+      const placeResult = document.querySelector('[data-place-result]')
+      let autocomplete
+      function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(placeSearch, {
+          types: ['geocode', 'cities'],
+          fields: ['place_id', 'geometry', 'name', 'icon', 'address_components'],
+          // fields: ['place_id', 'formatted_address', 'geometry.location'],
+        })
+        console.log(autocomplete)
+        autocomplete.addListener('place_changed', () => {
+          const place = autocomplete.getPlace()
+          if (place == null) return
+          // if (!place.geometry) return
+          placeResult.textContent = JSON.stringify(place, null, 2)
+          //   const lat = place.geometry.location.lat()
+          //   const long = place.geometry.location.lng()
+          //   const location = place.address_components[0].long_name
+          //   const maps_place_id = place.place_id
+          //   console.log('params: ', lat, long, maps_place_id, location)
+        })
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe5F6BMO5XbFpqwZ5OYAtHy6rQxXRcjxE&libraries=places&callback=initAutocomplete"
+    ></script>
+  </body>
+</html>
+
+01B56C-724810-B77C5A 016447-6AB1E2-8FA9CB 012B42-4609EF-49213E
