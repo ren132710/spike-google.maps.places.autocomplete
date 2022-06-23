@@ -7,7 +7,7 @@
  *  - callback: initSearchBox
  *      use to load google once page has loaded
  *      be sure to include: window.initSearchBox = initSearchBox
- *  - to hid the api key, build the <script> tag programmatically in index.html using dotenv
+ *  - to hide the api key, build the <script> tag programmatically in index.html using dotenv
  *     <script>
  *     const API_KEY = process.env.API_KEY
  *     const API_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initSearchBox`
