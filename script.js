@@ -20,8 +20,6 @@
  *   </script>
  */
 
-//TODO: Troubleshoot 'This page can't load Google Maps correctly. Do you own this website?'
-
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -31,9 +29,8 @@ const placeResult = document.querySelector('[data-place-result]')
 
 function initAutocomplete() {
   const autocomplete = new google.maps.places.Autocomplete(placeSearch, {
-    types: ['geocode', 'cities'],
-    fields: ['place_id', 'geometry', 'name', 'icon', 'address_components'],
-    // fields: ['place_id', 'formatted_address', 'geometry.location'],
+    types: ['geocode'],
+    fields: ['place_id', 'name', 'geometry.location'],
   })
   console.log(autocomplete)
 
@@ -42,11 +39,11 @@ function initAutocomplete() {
     if (place == null) return
     // if (!place.geometry) return
     placeResult.textContent = JSON.stringify(place, null, 2)
-    // const lat = place.geometry.location.lat()
-    // const long = place.geometry.location.lng()
-    // const location = place.address_components[0].long_name
-    // const maps_place_id = place.place_id
-    // console.log('params: ', lat, long, maps_place_id, location)
+    const location = place.name
+    const lat = place.geometry.location.lat()
+    const long = place.geometry.location.lng()
+    const maps_place_id = place.place_id
+    console.log('params: ', location, lat, long, maps_place_id)
   })
 }
 window.initAutocomplete = initAutocomplete
