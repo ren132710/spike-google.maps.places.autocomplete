@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <title>Spike | Maps AutoComplete</title>
-    <!-- in order to hide the api key on github, build the script tag programmatically using dotenv.-->
+    <!-- load script.js first so initAutocomplete function is there for callback-->
+    <script defer src="script.js" type="module"></script>
+    <!-- hide the api key on github, build the script tag programmatically-->
     <script>
       const API_KEY = process.env.API_KEY
       const API_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initAutocomplete`
       const script = document.createElement('script')
       script.src = API_URL
       script.defer = true
-      script.async = true
       document.head.appendChild(script)
       console.log('script tag: ', document.head.appendChild(script))
     </script>
-    <script defer src="script.js" type="module"></script>
   </head>
   <body>
     <h1>Spike | Maps AutoComplete</h1>
