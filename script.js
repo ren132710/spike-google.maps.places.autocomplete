@@ -1,20 +1,20 @@
 /*
  * spike
  *  - understand how SearchBox works
- *  - async: works if present or not
- *  - defer: works if present or not
- *  - type="text/javascript": works if present or not
- *  - callback: initSearchBox
+ *  - async: file is downloaded asynchronously and then executed as soon as it’s downloaded
+ *  - defer: file is downloaded asynchronously, but executed only when the document parsing is completed
+ *  - callback: initAutocomplete
  *      use to load google once page has loaded
- *      be sure to include: window.initSearchBox = initSearchBox
- *  - to hide the api key, build the <script> tag programmatically in index.html using dotenv
+ *      be sure to declare the global variable: window.initAutocomplete = initAutocomplete
+ *  - to hide the api key, build the <script> tag programmatically in index.html
+ *
+ *    //TODO: This approach does not work with parcel 2.0
  *     <script>
  *     const API_KEY = process.env.API_KEY
  *     const API_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initSearchBox`
  *     const script = document.createElement('script')
  *     script.src = API_URL
  *     script.defer = true
- *     script.async = true
  *     document.head.appendChild(script)
  *     console.log('script tag: ', document.head.appendChild(script))
  *   </script>
