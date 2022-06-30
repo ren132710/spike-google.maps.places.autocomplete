@@ -20,13 +20,6 @@
  *   </script>
  */
 
-// if (process.env.NODE_ENV !== 'production') {
-//   require('dotenv').config()
-// }
-
-//parcel-bundler seems to prefer this syntax for importing dotenv/config
-import {} from 'dotenv/config'
-
 const placeSearch = document.querySelector('[data-place-search]')
 const placeResult = document.querySelector('[data-place-result]')
 

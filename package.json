@@ -19,8 +19,5 @@
   "homepage": "https://github.com/ren132710/spike-google.maps.places#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.1"
   }
 }
